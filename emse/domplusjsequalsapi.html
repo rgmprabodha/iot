@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DOM practice</title>
+    <style type="text/css">
+        .example_f {
+            border-radius: 4px;
+            background: linear-gradient(to right, #67b26b, #4ca2cb) !important;
+            border: none;
+            color: #FFFFFF;
+            text-transform: uppercase;
+            font-size: 22px;
+            padding: 20px;
+            width: 250px;
+            transition: all 0.4s;
+            cursor: pointer;
+            margin: 5px;
+        }
+
+    </style>
+</head>
+<body>
+<p id="25" class="example_f">Player1 : Malshani </p>
+<p id="26" class="example_f">Player2 : Prabodha </p>
+<script>
+    let para1 = document.getElementById("25");
+    let para2 = document.getElementById("26");
+    para1.addEventListener('click', function() {
+        updateName(para1);
+    });
+
+    para2.addEventListener('click', function() {
+        updateName(para2);
+    });
+
+//    param1.addEventListener('mousedown', addNewLine);
+
+    let name;
+    let player;
+    function updateName(para) {
+        //alert(para.id);
+        name = prompt('Enter a name');
+        if(para.id == "25"){
+            player = "Player 1: ";
+        }else{
+            player = "Player 2: ";
+        }
+        para.textContent = player + name;
+    }
+
+//    function addNewLine() {
+//        const heading = document.createElement("h1");
+//        const heading_text = document.createTextNode("playe name "+name.toUpperCase());
+//        heading.appendChild(heading_text);
+//        document.body.appendChild(heading);
+//    }
+</script>
+</body>
+</html>

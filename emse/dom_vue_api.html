@@ -1,0 +1,103 @@
+<!-- /var/www/html/sites/emse/dom_api.html -->
+<!DOCTYPE html>
+<meta charset="utf-8"/>
+<html>
+<head>
+    <title>Rooms API</title>
+    <meta charset="utf-8"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
+          integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb"
+          crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <style>
+        .center {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            /*width: 50%;*/
+        }
+    </style>
+</head>
+
+<body>
+<header style="display: flex;">
+    <div id="titre_principal">
+        <div id="logo">
+            <h1>EMSE</h1>
+        </div>
+        <h2></h2>
+    </div>
+</header>
+
+<div id="app">
+    <div class="container-flex">
+        <p>
+        <h3><font style="vertical-align: inherit;"> List of Rooms</font></h3>
+        </p>
+        <div id="rooms">
+            <img src="images/loader.gif" v-if="loading" class="center"/>
+            <table class="table" id="myTable" v-else>
+                <thead>
+                <th>#</th>
+                <th>Light Status</th>
+                <th>Light Level</th>
+                <th>Ringer status</th>
+                <th>Noise Level</th>
+                <th>Switch Light</th>
+                <th>Switch Noice</th>
+                </thead>
+                <tbody>
+                <!--<tr v-for="room in rooms">-->
+                <!--<td scope="row">{{ room.id }}</td>-->
+                <!--<td><img v-bind:src="room.imageLight" width="40" height="40"/></td>-->
+                <!--<td>{{ room.lightLevel }}</td>-->
+                <!--<td><img v-bind:src="room.imageNoise" width="40" height="40"/></td>-->
+                <!--<td>{{ room.noiseLevel }}</td>-->
+                <!--<td><button class="btn btn-light" @click="switchLightMethod(room.id)" ><img v-bind:src="room.switchLight" width="25" height="25"/></button></td>-->
+                <!--<td><button class="btn btn-light" @click="switchRingerMethod(room.id)" ><img v-bind:src="room.switchRinger" width="25" height="25"/></button></td>-->
+                <!--</tr>-->
+                <tr v-for="room in rooms">
+                    <td scope="row">{{ room.id }}</td>
+                    <td>
+                        <div v-if="room.light.status == 'ON'"><img src="images/light-on.png" width="40"></div>
+                        <div v-else-if="room.light.status == 'OFF'"><img src="images/light-off.png" width="40"></div>
+                    </td>
+                    <td>{{ room.light.level }}</td>
+                    <td>
+                        <div v-if="room.noise.status == 'ON'"><img src="images/ringer-on.png" width="40"></div>
+                        <div v-else-if="room.noise.status == 'OFF'"><img src="images/ringer-off.png" width="40"></div>
+                    <td>{{ room.noise.level }}</td>
+                    <td>
+                        <button @click="switchLightMethod(room.id)" class="btn btn-light">
+                            <img src="images/switch.png" width="25"/></button>
+                    </td>
+                    <td>
+                        <button @click="switchRingerMethod(room.id)" class="btn btn-light">
+                            <img src="images/switch.png" width="25"/></button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+
+<!--<div id="app-2">-->
+<!--<span v-bind:title="message">-->
+<!--Hover your mouse over me for a few seconds to see my dynamically bound title!-->
+<!--</span>-->
+<!--</div>-->
+
+<!--<div id="app-3">-->
+<!--<span v-if="seen">Now you see me</span>-->
+<!--</div>-->
+
+
+<!--<script src="js/dom_api.js"></script>-->
+<script src="js/vue_codes.js"></script>
+
+
+</body>
+</html>
